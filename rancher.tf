@@ -97,6 +97,7 @@ resource "rancher2_node_template" "managed-cluster" {
     # ssh_keypath          = "/home/ec2-user/.ssh/id_rsa" # var.cluster_ssh_private_key_filename
     instance_type        = var.ec2_instance_type
     private_address_only = true
+    iam_instance_profile = aws_iam_instance_profile.rancher-managed-nodes.name
   }
 }
 # Create a new rancher2 RKEv1 Node Pool
