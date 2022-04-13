@@ -20,6 +20,9 @@ output "token" {
   # value = rancher2_cluster.managed-cluster.kube_config cluster_registration_token
   value = yamldecode(rancher2_cluster.managed-cluster.kube_config)["users"][0]["user"]["token"]
 }
+output "instance_profile_role_name" {
+  value = aws_iam_role.rancher-managed-nodes.name
+}
 //output "workload_node_ip" {
 //  value = aws_instance.rancher-managed-cluster.private_ip
 //}

@@ -97,6 +97,8 @@ resource "rancher2_node_template" "managed-cluster" {
     # ssh_keypath          = "/home/ec2-user/.ssh/id_rsa" # var.cluster_ssh_private_key_filename
     instance_type        = var.ec2_instance_type
     private_address_only = true
+    # Note that we RancherServer must allow PassRole in its IAM for rolenames "*-k8s-rancher-managed-nodes" (as below)
+    # so the rancher-provisioned managed clusters are allow to set an instance profile on themselves.
     iam_instance_profile = aws_iam_instance_profile.rancher-managed-nodes.name
   }
 }
